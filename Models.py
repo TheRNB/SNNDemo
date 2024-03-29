@@ -8,7 +8,7 @@ class LIF (pymo.Behavior):
         self.u_reset = self.parameter("u_reset", default=None, required=True)
         self.threshold = self.parameter("threshold", default=None, required=True)
         self.ratio = self.parameter("ration", default=1.1, required=False)
-        self.refactory_period = self.parameter("refactory", default=False, required=False)
+        self.refactory_period = self.parameter("refractory", default=False, required=False)
 
         neural_group.u =((neural_group.vector("uniform") #returns between 0-1
                         * (self.threshold - self.u_reset) #returns the length of values LIF can get
@@ -42,7 +42,7 @@ class ELIF (pymo.Behavior):
         self.ratio = self.parameter("ration", default=1.1, required=False)
         self.sharpness = self.parameter("sharpness", default=None, required=True)
         self.firing_threshold = self.parameter("phi", default=None, required=True)
-        self.refactory_period = self.parameter("refactory", default=False, required=False)
+        self.refactory_period = self.parameter("refractory", default=False, required=False)
 
         neural_group.u =((neural_group.vector("uniform") #returns between 0-1
                         * (self.threshold - self.u_reset) #returns the length of values LIF can get
@@ -79,7 +79,7 @@ class AELIF (pymo.Behavior):
         self.A_param = self.parameter("A", default=None, required=True)
         self.B_param = self.parameter("B", default=None, required=True)
         self.tau_w = self.parameter("tau_w", default=None, required=True)
-        self.refactory_period = self.parameter("refactory", default=False, required=False)
+        self.refactory_period = self.parameter("refractory", default=False, required=False)
 
         neural_group.adaptation = neural_group.vector(mode="zeros")
         neural_group.u =((neural_group.vector("uniform") #returns between 0-1
