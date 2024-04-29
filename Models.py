@@ -4,14 +4,14 @@ class LIF (pymo.Behavior):
     def initialize(self, neural_group):
         self.R = self.parameter("R", default=None, required=True)
         self.tau = self.parameter("tau", default=None, required=True)
-        self.u_rest = self.parameter("u_rest", default=None, required=True)
-        self.u_reset = self.parameter("u_reset", default=None, required=True)
-        self.threshold = self.parameter("threshold", default=None, required=True)
+        self.u_rest = self.parameter("u_rest", default=-67, required=True)
+        self.u_reset = self.parameter("u_reset", default=-75, required=True)
+        self.threshold = self.parameter("threshold", default=-37, required=True)
         self.ratio = self.parameter("ration", default=1.1, required=False)
         self.refactory_period = self.parameter("refractory", default=False, required=False)
 
         neural_group.u =((neural_group.vector("uniform") #returns between 0-1
-                        * (self.threshold - self.u_reset) #returns the length of values LIF can get
+                        * (self.threshold - self.u_reset) #returns the length of values LIF can get # type: ignore
                         * self.ratio) #sets a ratio to boost the starting potential with
                         + self.u_reset) #sets the min value to be u_reset
 
@@ -36,16 +36,16 @@ class ELIF (pymo.Behavior):
     def initialize(self, neural_group):
         self.R = self.parameter("R", default=None, required=True)
         self.tau = self.parameter("tau", default=None, required=True)
-        self.u_rest = self.parameter("u_rest", default=None, required=True)
-        self.u_reset = self.parameter("u_reset", default=None, required=True)
-        self.threshold = self.parameter("threshold", default=None, required=True)
+        self.u_rest = self.parameter("u_rest", default=-67, required=True)
+        self.u_reset = self.parameter("u_reset", default=-75, required=True)
+        self.threshold = self.parameter("threshold", default=-37, required=True)
         self.ratio = self.parameter("ration", default=1.1, required=False)
         self.sharpness = self.parameter("sharpness", default=None, required=True)
         self.firing_threshold = self.parameter("phi", default=None, required=True)
         self.refactory_period = self.parameter("refractory", default=False, required=False)
 
         neural_group.u =((neural_group.vector("uniform") #returns between 0-1
-                        * (self.threshold - self.u_reset) #returns the length of values LIF can get
+                        * (self.threshold - self.u_reset) #returns the length of values LIF can get # type: ignore
                         * self.ratio) #sets a ratio to boost the starting potential with
                         + self.u_reset) #sets the min value to be u_reset
 
@@ -70,9 +70,9 @@ class AELIF (pymo.Behavior):
     def initialize(self, neural_group):
         self.R = self.parameter("R", default=None, required=True)
         self.tau = self.parameter("tau", default=None, required=True)
-        self.u_rest = self.parameter("u_rest", default=None, required=True)
-        self.u_reset = self.parameter("u_reset", default=None, required=True)
-        self.threshold = self.parameter("threshold", default=None, required=True)
+        self.u_rest = self.parameter("u_rest", default=-67, required=True)
+        self.u_reset = self.parameter("u_reset", default=-75, required=True)
+        self.threshold = self.parameter("threshold", default=-37, required=True)
         self.ratio = self.parameter("ration", default=1.1, required=False)
         self.sharpness = self.parameter("sharpness", default=None, required=True)
         self.firing_threshold = self.parameter("phi", default=None, required=True)
@@ -83,7 +83,7 @@ class AELIF (pymo.Behavior):
 
         neural_group.adaptation = neural_group.vector(mode="zeros")
         neural_group.u =((neural_group.vector("uniform") #returns between 0-1
-                        * (self.threshold - self.u_reset) #returns the length of values LIF can get
+                        * (self.threshold - self.u_reset) #returns the length of values LIF can get # type: ignore
                         * self.ratio) #sets a ratio to boost the starting potential with
                         + self.u_reset) #sets the min value to be u_reset
 

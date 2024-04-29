@@ -73,7 +73,7 @@ class SineCurrent(pymo.Behavior):
         return
 
     def forward(self, neural_group):
-        neural_group.I = neural_group.vector(self.value + (self.coefficient * math.sin(self.modifier * neural_group.network.time_passed)))
+        neural_group.I = neural_group.vector(self.value + (self.coefficient * math.sin(self.modifier * neural_group.network.time_passed))) # type: ignore
         if self.noise:
             neural_group.I = neural_group.I + pymo.torch.normal(mean=0.0, std=1, size=neural_group.I.size())
         return
